@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & BASICS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fce4ec; /* Soft Pink Base */
+            /* Metallic Gradient Background */
+            background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 50%, #fce4ec 100%);
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(236, 64, 122, 0.2);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #d81b60;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #880e4f;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: #d81b60;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 80px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #880e4f;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+            border-bottom: 3px solid #f06292;
+            padding-bottom: 10px;
+        }
+
+        /* --- HOME SECTION --- */
+        #home {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.4);
+            /* Metallic Sheen Effect */
+            background: linear-gradient(45deg, #f06292, #f8bbd0, #f06292);
+            padding: 5px; 
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            background: -webkit-linear-gradient(#d81b60, #880e4f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: #6a1b9a;
+            font-weight: 300;
+        }
+
+        /* --- METALLIC CARDS --- */
+        .card {
+            background: linear-gradient(145deg, #ffffff, #fce4ec);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow:  20px 20px 60px #f5b7c3, -20px -20px 60px #ffffff;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow:  30px 30px 80px #f5b7c3, -10px -10px 40px #ffffff;
+        }
+
+        /* --- PROJECTS --- */
+        .project-icon {
+            font-size: 3rem;
+            color: #d81b60;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* --- BLOG --- */
+        .blog-date {
+            font-size: 0.9rem;
+            color: #d81b60;
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- CONTACT --- */
+            font-size: 0.9rem;
+            color: #d81b60;
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8bbd0;
+            color: #880e4f;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS ON SCROLL --- */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s;
+        }
+        
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Portfolio Bañaga</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home">
+        <div class="profile-container">
+            <!-- NOTE: Make sure your image is named profile.jpg -->
+            <img src="profile.jpg" alt="Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/250px/ffc0cb/ffffff?text=Profile'">
+        </div>
+        <h1>Hi, I’m Lady Caroline Bañaga</h1>
+        <p>BSIT Student | Future Web Developer</p>
+        <br>
+        </p>Welcome to my personal portfolio website! I am a passionate Bachelor of Science in Information Technology student who dreams  of becoming a successful developer in the future.</p>
+         <br>
+       </p>I love creating beautiful and functional</p>
+      </p>websites, especially with soft and creative designs.</p>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about">
+        <div class="card hidden">
+            <h2>About Me</h2>
+            <p>Hello! I’m Lady Caroline, a BSIT student and aspiring developer.</p>
+            <br>
+            <p>Apart from coding, I’m also a creative girl who loves handmade crafts and artistic designs. I enjoy combining creativity and technology to build projects that are not only functional but also visually appealing.</p>
+            <br>
+            <p>I believe that technology and creativity can work together to create something amazing.</p>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="card hidden">
+            <div class="project-icon"></div>
+            <h3>Pink Calculator Project</h3>
+            <p>A simple and cute calculator designed with a soft pink theme.</p>
+            <ul>
+                <li>Addition</li>
+                <li>Subtraction</li>
+                <li>Multiplication</li>
+                <li>Division</li>
+            </ul>
+            <br>
+            <p><i>This project helped me understand JavaScript functions and basic logic in programming.</i></p>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section id="blog">
+        <h2>Blog</h2>
+        <div class="card hidden">
+            <h3>My Journey as a BSIT Student</h3>
+            <span class="blog-date">Posted recently</span>
+            <p>Being a BSIT student is not always easy, but it is exciting and fulfilling. Every day, I learn something new about programming, web development, and technology.</p>
+            <br>
+            <p>Sometimes coding can be challenging, but solving errors and making a project work feels very rewarding. My goal is to continue improving my skills and become a confident and successful developer someday.</p>
+            <br>
+            <p>I believe that with patience, practice, and passion, I can achieve my dreams.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Contact Me</h2>        
+        
+        <div>
+           <br>
+           <p><strong> Phone No:</strong>0988657535</p>  
+             <p><strong>Email:</strong>ladycarolinecastrobanaga@gmail.com</p>
+            <p><strong>Facebook:</strong> Dada bañaga</p>
+            <p><strong>Instagram:</strong> @Worthless_dump</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Lady Caroline Bañaga. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple Scroll Animation Script
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                console.log(entry)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
